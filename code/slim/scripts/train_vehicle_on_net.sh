@@ -45,7 +45,7 @@ python3 train_image_classifier.py \
   --dataset_dir=${DATASET_DIR} \
   --model_name=inception_v3 \
   --preprocessing_name=inception \
-  --max_number_of_steps=200 \
+  --max_number_of_steps=50 \
   --batch_size=12 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
