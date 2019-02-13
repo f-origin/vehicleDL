@@ -40,7 +40,7 @@ tf.app.flags.DEFINE_integer('num_clones', 1,
                             'out and learning rate decay happen per clone '
                             'epochs')
 
-tf.app.flags.DEFINE_boolean('clone_on_cpu', True,
+tf.app.flags.DEFINE_boolean('clone_on_cpu', False,
                             'Use CPUs to deploy clones.')
 
 tf.app.flags.DEFINE_integer('worker_replicas', 1, 'Number of worker replicas.')
@@ -351,9 +351,6 @@ def _get_init_fn():
   if FLAGS.checkpoint_exclude_scopes:
     exclusions = [scope.strip()
                   for scope in FLAGS.checkpoint_exclude_scopes.split(',')]
-    print("&&&&&&&&&&&&&&&&&&&&&&&&&")
-    print(exclusions)
-    print("&&&&&&&&&&&&&&&&&&&&&&&&&")
 
   # TODO(sguada) variables.filter_variables()
   variables_to_restore = []
