@@ -68,11 +68,6 @@ python3 eval_image_classifier.py \
   --dataset_dir=${DATASET_DIR} \
   --model_name=${MODEL_NAME}
 
-# Run export.
-python3 export_inference_graph.py \
-  --alsologtostderr \
-  --model_name=${MODEL_NAME} \
-  --output_file=${TRAIN_DIR}/inception_v3_inf_graph.pb
 
 cd ${OUT_DIR}
 tar -zvcf model_exported.tar.gz vehicle-model/
