@@ -33,4 +33,4 @@ TRAIN_DIR=~/tmp/vehicle-model
 # DATASET_DIR=/data/forigin/car-detction
 DATASET_DIR=~/tmp/vehicle
 
-tar -zvcf ${TRAIN_DIR}/${TRAIN_DIR}.tar.gz ${TRAIN_DIR}
+tar -zvcf ${TRAIN_DIR}/model_exported.tar.gz ${TRAIN_DIR}
