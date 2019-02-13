@@ -34,4 +34,4 @@ TRAIN_DIR=~/tmp/vehicle-model
 DATASET_DIR=~/tmp/vehicle
 
 cd ~/tmp
-tar -zvcf /model_exported.tar.gz vehicle-model
+tar -zvcf model_exported.tar.gz vehicle-model
