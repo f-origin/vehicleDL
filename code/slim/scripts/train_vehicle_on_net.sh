@@ -26,12 +26,12 @@ set -e
 
 echo "run train vehicle shell"
 # Where the checkpoint and logs will be saved to.
-TRAIN_DIR=/output/train
-# TRAIN_DIR=~/tmp/vehicle-model
+# TRAIN_DIR=/output/train
+TRAIN_DIR=~/tmp/vehicle-model
 
 # Where the dataset is saved to.
-DATASET_DIR=/data/forigin/car-detction
-# DATASET_DIR=~/tmp/vehicle
+# DATASET_DIR=/data/forigin/car-detction
+DATASET_DIR=~/tmp/vehicle
 # Download the dataset
 #python download_and_convert_data.py \
 #  --dataset_name=cifar10 \
@@ -44,8 +44,9 @@ python3 train_image_classifier.py \
   --dataset_split_name=train \
   --dataset_dir=${DATASET_DIR} \
   --model_name=inception_v3 \
+  --checkpoint_path=${DATASET_DIR}/inception_v3.ckpt \
   --preprocessing_name=inception \
-  --max_number_of_steps=20000 \
+  --max_number_of_steps=20 \
   --batch_size=12 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
