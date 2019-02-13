@@ -351,6 +351,7 @@ def _get_init_fn():
   if FLAGS.checkpoint_exclude_scopes:
     exclusions = [scope.strip()
                   for scope in FLAGS.checkpoint_exclude_scopes.split(',')]
+    print(exclusions)
 
   # TODO(sguada) variables.filter_variables()
   variables_to_restore = []
