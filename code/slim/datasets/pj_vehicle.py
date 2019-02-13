@@ -12,10 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-"""Provides data for the Cifar10 dataset.
-
-The dataset scripts used to create the dataset can be found at:
-tensorflow/models/research/slim/datasets/download_and_convert_cifar10.py
+"""Provides data for the vehicle dataset.
 """
 
 from __future__ import absolute_import
@@ -31,12 +28,12 @@ slim = tf.contrib.slim
 
 _FILE_PATTERN = 'pj_vehicle_%s_*.tfrecord'
 
-SPLITS_TO_SIZES = {'train': 40000, 'validation': 4500}
+SPLITS_TO_SIZES = {'train': 40000, 'validation': 450}
 
 _NUM_CLASSES = 764
 
 _ITEMS_TO_DESCRIPTIONS = {
-    'image': 'A [32 x 32 x 3] color image.',
+    'image': 'A car image.',
     'label': 'A single integer between 0 and 763',
 }
 
