@@ -26,12 +26,12 @@ set -e
 
 echo "run train vehicle shell"
 # Where the checkpoint and logs will be saved to.
-TRAIN_DIR=/output/train
-# TRAIN_DIR=~/tmp/vehicle-model
+# TRAIN_DIR=/output/train
+TRAIN_DIR=~/tmp/vehicle-model
 
 # Where the dataset is saved to.
-DATASET_DIR=/data/forigin/car-detction
-#DATASET_DIR=~/tmp/vehicle
+# DATASET_DIR=/data/forigin/car-detction
+DATASET_DIR=~/tmp/vehicle
 # Download the dataset
 #python download_and_convert_data.py \
 #  --dataset_name=cifar10 \
