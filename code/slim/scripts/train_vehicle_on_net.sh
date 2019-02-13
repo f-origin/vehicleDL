@@ -48,7 +48,7 @@ python3 train_image_classifier.py \
   --checkpoint_path=${DATASET_DIR}/inception_v3.ckpt \
   --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
   --preprocessing_name=inception \
-  --max_number_of_steps=500 \
+  --max_number_of_steps=50000 \
   --batch_size=24 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
@@ -68,11 +68,6 @@ python3 eval_image_classifier.py \
   --dataset_dir=${DATASET_DIR} \
   --model_name=${MODEL_NAME}
 
-# Run export.
-python3 export_inference_graph.py \
-  --alsologtostderr \
-  --model_name=${MODEL_NAME} \
-  --output_file=${TRAIN_DIR}/inception_v3_inf_graph.pb
 
 cd ${OUT_DIR}
 tar -zvcf model_exported.tar.gz vehicle-model/
