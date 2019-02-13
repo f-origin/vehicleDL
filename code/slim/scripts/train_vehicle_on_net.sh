@@ -32,10 +32,8 @@ TRAIN_DIR=~/tmp/vehicle-model
 # Where the dataset is saved to.
 # DATASET_DIR=/data/forigin/car-detction
 DATASET_DIR=~/tmp/vehicle
-# Download the dataset
-#python download_and_convert_data.py \
-#  --dataset_name=cifar10 \
-#  --dataset_dir=${DATASET_DIR}
+
+MODEL_NAME=inception_v3
 
 # Run training.
 python3 train_image_classifier.py \
@@ -43,7 +41,7 @@ python3 train_image_classifier.py \
   --dataset_name=pj_vehicle \
   --dataset_split_name=train \
   --dataset_dir=${DATASET_DIR} \
-  --model_name=inception_v3 \
+  --model_name=${MODEL_NAME} \
   --checkpoint_path=${DATASET_DIR}/inception_v3.ckpt \
   --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
   --preprocessing_name=inception \
@@ -65,4 +63,10 @@ python3 eval_image_classifier.py \
   --dataset_name=pj_vehicle \
   --dataset_split_name=validation \
   --dataset_dir=${DATASET_DIR} \
-  --model_name=inception_v3
+  --model_name=${MODEL_NAME}
+
+# Run export.
+python3 export_inference_graph.py \
+  --alsologtostderr \
+  --model_name=${MODEL_NAME} \
+  --output_file=${TRAIN_DIR}/inception_v3_inf_graph.pb
