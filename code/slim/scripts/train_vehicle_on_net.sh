@@ -26,8 +26,10 @@ set -e
 
 echo "run train vehicle shell"
 # Where the checkpoint and logs will be saved to.
-# TRAIN_DIR=/output/train
-TRAIN_DIR=~/tmp/vehicle-model
+# OUT_DIR=/output
+# TRAIN_DIR=${OUT_DIR}/train
+OUT_DIR=~/tmp
+TRAIN_DIR=${OUT_DIR}/vehicle-model
 
 # Where the dataset is saved to.
 # DATASET_DIR=/data/forigin/car-detction
