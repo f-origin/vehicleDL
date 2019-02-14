@@ -39,6 +39,9 @@ DATASET_NAME=pj_vehicle
 
 # Model name
 MODEL_NAME=inception_v4
+EXPORT_NAME=inception_v4_inf_graph.pb
+FREEZE_NAME=freezed_inception_v4.pb
+
 
 # Run training.
 python3 train_image_classifier.py \
@@ -75,7 +78,15 @@ python3 export_inference_graph.py \
   --batch_size=1 \
   --dataset_name=${DATASET_NAME} \
   --dataset_dir=${DATASET_DIR} \
-  --output_file=${TRAIN_DIR}/inception_v3_inf_graph.pb
+  --output_file=${TRAIN_DIR}/${EXPORT_NAME}
+
+# Run Freeze.
+python3 freeze_graph.py \
+  --input_graph=${TRAIN_DIR}/${EXPORT_NAME} \
+  --input_binary=True \
+  --input_checkpoint=${TRAIN_DIR}/model.ckpt-200 \
+  --output_graph=${TRAIN_DIR}/${FREEZE_NAME} \
+  output_node_names=InceptionV4/Predictions/Softmax
 
 #cd ${OUT_DIR}
 #tar -zvcf model_exported.tar.gz vehicle-model/
