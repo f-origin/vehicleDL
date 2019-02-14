@@ -44,6 +44,13 @@ FREEZE_NAME=freezed_inception_v4.pb
 
 
 
+# Run export.
+python3 export_inference_graph.py \
+  --model_name=${MODEL_NAME} \
+  --batch_size=1 \
+  --dataset_name=${DATASET_NAME} \
+  --dataset_dir=${DATASET_DIR} \
+  --output_file=${TRAIN_DIR}/${EXPORT_NAME}
 
 # Run Freeze.
 python3 freeze_graph.py \
