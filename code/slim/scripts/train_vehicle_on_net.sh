@@ -36,7 +36,7 @@ DATASET_DIR=/data/forigin/car-detction
 # DATASET_DIR=~/tmp/vehicle
 
 # Model name
-MODEL_NAME=inception_v3
+MODEL_NAME=inception_v4
 
 # Run training.
 python3 train_image_classifier.py \
@@ -48,7 +48,7 @@ python3 train_image_classifier.py \
   --checkpoint_path=${DATASET_DIR}/inception_v3.ckpt \
   --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
   --preprocessing_name=inception \
-  --max_number_of_steps=10000 \
+  --max_number_of_steps=15000 \
   --batch_size=15 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
