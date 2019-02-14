@@ -135,8 +135,9 @@ def main(_):
       input_shape = [FLAGS.batch_size, image_size, image_size, 3]
     placeholder = tf.placeholder(name='input', dtype=tf.float32,
                                  shape=input_shape)
-    network_fn(placeholder)
 
+    logits,end_points = network_fn(placeholder)
+    predictions = tf.nn.softmax(logits, name='output')
     if FLAGS.quantize:
       tf.contrib.quantize.create_eval_graph()
 
