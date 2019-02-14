@@ -58,7 +58,7 @@ python3 freeze_graph.py \
   --input_binary=True \
   --input_checkpoint=${TRAIN_DIR}/model.ckpt-200 \
   --output_graph=${TRAIN_DIR}/${FREEZE_NAME} \
-  output_node_names=InceptionV4/Predictions/Softmax
+  --output_node_names=InceptionV4/Predictions/Softmax
 
 #cd ${OUT_DIR}
 #tar -zvcf model_exported.tar.gz vehicle-model/
