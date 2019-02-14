@@ -49,7 +49,7 @@ python3 train_image_classifier.py \
   --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
   --preprocessing_name=inception \
   --max_number_of_steps=10000 \
-  --batch_size=12 \
+  --batch_size=15 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
   --log_every_n_steps=100 \
