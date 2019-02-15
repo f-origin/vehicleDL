@@ -29,13 +29,13 @@ echo "run train vehicle shell"
 OUT_DIR=/output
 # OUT_DIR=~/tmp
 
-TRAIN_DIR=${OUT_DIR}/cifarnet-model
+TRAIN_DIR=${OUT_DIR}/vehicle-model
 
 # Where the dataset is saved to.
-DATASET_DIR=/data/forigin/cifar10
-# DATASET_DIR=~/tmp/cifar10
+DATASET_DIR=/data/forigin/vehicle
+# DATASET_DIR=~/tmp/vehicle
 
-DATASET_NAME=cifar10
+DATASET_NAME=vehicle
 
 # Model name
 MODEL_NAME=inception_v3
@@ -66,7 +66,7 @@ python3 eval_image_classifier.py \
   --checkpoint_path=${TRAIN_DIR} \
   --eval_dir=${TRAIN_DIR} \
   --dataset_name=${DATASET_NAME} \
-  --dataset_split_name=test \
+  --dataset_split_name=validation \
   --dataset_dir=${DATASET_DIR} \
   --model_name=${MODEL_NAME}
 
