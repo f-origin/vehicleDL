@@ -26,14 +26,14 @@ set -e
 
 echo "run train vehicle shell"
 # Where the checkpoint and logs will be saved to.
-# OUT_DIR=/output
-OUT_DIR=~/tmp
+OUT_DIR=/output
+# OUT_DIR=~/tmp
 
 TRAIN_DIR=${OUT_DIR}/cifarnet-model
 
 # Where the dataset is saved to.
-# DATASET_DIR=/data/forigin/car-detction
-DATASET_DIR=~/tmp/cifar10
+DATASET_DIR=/data/forigin/cifar10
+# DATASET_DIR=~/tmp/cifar10
 
 DATASET_NAME=cifar10
 
@@ -52,13 +52,13 @@ python3 train_image_classifier.py \
   --model_name=${MODEL_NAME} \
   --checkpoint_path=${DATASET_DIR}/${MODEL_NAME}.ckpt \
   --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --max_number_of_steps=1000 \
-  --batch_size=2 \
+  --max_number_of_steps=5000 \
+  --batch_size=12 \
   --learning_rate=0.1 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
   --log_every_n_steps=100 \
-  --clone_on_cpu=True
+  --clone_on_cpu=False
   
 
 # Run evaluation.
