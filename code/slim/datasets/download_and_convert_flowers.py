@@ -188,24 +188,24 @@ def run(dataset_dir):
     return
 
   dataset_utils.download_and_uncompress_tarball(_DATA_URL, dataset_dir)
-  photo_filenames, class_names = _get_filenames_and_classes(dataset_dir)
-  class_names_to_ids = dict(zip(class_names, range(len(class_names))))
-
-  # Divide into train and test:
-  random.seed(_RANDOM_SEED)
-  random.shuffle(photo_filenames)
-  training_filenames = photo_filenames[_NUM_VALIDATION:]
-  validation_filenames = photo_filenames[:_NUM_VALIDATION]
-
-  # First, convert the training and validation sets.
-  _convert_dataset('train', training_filenames, class_names_to_ids,
-                   dataset_dir)
-  _convert_dataset('validation', validation_filenames, class_names_to_ids,
-                   dataset_dir)
-
-  # Finally, write the labels file:
-  labels_to_class_names = dict(zip(range(len(class_names)), class_names))
-  dataset_utils.write_label_file(labels_to_class_names, dataset_dir)
-
-  _clean_up_temporary_files(dataset_dir)
+  # photo_filenames, class_names = _get_filenames_and_classes(dataset_dir)
+  # class_names_to_ids = dict(zip(class_names, range(len(class_names))))
+  #
+  # # Divide into train and test:
+  # random.seed(_RANDOM_SEED)
+  # random.shuffle(photo_filenames)
+  # training_filenames = photo_filenames[_NUM_VALIDATION:]
+  # validation_filenames = photo_filenames[:_NUM_VALIDATION]
+  #
+  # # First, convert the training and validation sets.
+  # _convert_dataset('train', training_filenames, class_names_to_ids,
+  #                  dataset_dir)
+  # _convert_dataset('validation', validation_filenames, class_names_to_ids,
+  #                  dataset_dir)
+  #
+  # # Finally, write the labels file:
+  # labels_to_class_names = dict(zip(range(len(class_names)), class_names))
+  # dataset_utils.write_label_file(labels_to_class_names, dataset_dir)
+  #
+  # _clean_up_temporary_files(dataset_dir)
   print('\nFinished converting the Flowers dataset!')
