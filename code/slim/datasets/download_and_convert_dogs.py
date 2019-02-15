@@ -160,7 +160,7 @@ def _clean_up_temporary_files(dataset_dir):
   filepath = os.path.join(dataset_dir, filename)
   tf.gfile.Remove(filepath)
 
-  tmp_dir = os.path.join(dataset_dir, 'flower_photos')
+  tmp_dir = os.path.join(dataset_dir, 'Images')
   tf.gfile.DeleteRecursively(tmp_dir)
 
 
