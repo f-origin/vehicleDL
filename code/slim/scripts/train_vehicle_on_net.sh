@@ -26,16 +26,16 @@ set -e
 
 echo "run train vehicle shell"
 # Where the checkpoint and logs will be saved to.
-OUT_DIR=/output
-# OUT_DIR=~/tmp
+# OUT_DIR=/output
+OUT_DIR=~/tmp
 
-TRAIN_DIR=${OUT_DIR}/vehicle-model
+TRAIN_DIR=${OUT_DIR}/cifarnet-model
 
 # Where the dataset is saved to.
-DATASET_DIR=/data/forigin/car-detction
-# DATASET_DIR=~/tmp/vehicle
+# DATASET_DIR=/data/forigin/car-detction
+DATASET_DIR=~/tmp/cifar10
 
-DATASET_NAME=pj_vehicle
+DATASET_NAME=cifar10
 
 # Model name
 MODEL_NAME=inception_v3
@@ -52,8 +52,8 @@ python3 train_image_classifier.py \
   --model_name=${MODEL_NAME} \
   --checkpoint_path=${DATASET_DIR}/${MODEL_NAME}.ckpt \
   --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --max_number_of_steps=5000 \
-  --batch_size=32 \
+  --max_number_of_steps=1000 \
+  --batch_size=12 \
   --learning_rate=0.1 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
@@ -82,7 +82,7 @@ python3 export_inference_graph.py \
 python3 freeze_graph.py \
   --input_graph=${TRAIN_DIR}/${EXPORT_NAME} \
   --input_binary=True \
-  --input_checkpoint=${TRAIN_DIR}/model.ckpt-5000 \
+  --input_checkpoint=${TRAIN_DIR}/model.ckpt-1000 \
   --output_graph=${TRAIN_DIR}/${FREEZE_NAME} \
   --output_node_names=output
 
