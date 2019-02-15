@@ -53,12 +53,12 @@ python3 train_image_classifier.py \
   --checkpoint_path=${DATASET_DIR}/inception_v4.ckpt \
   --checkpoint_exclude_scopes=InceptionV4/Logits,InceptionV4/AuxLogits \
   --preprocessing_name=inception \
-  --max_number_of_steps=50000 \
-  --batch_size=24 \
+  --max_number_of_steps=5000 \
+  --batch_size=15 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
   --log_every_n_steps=100 \
-  --optimizer=adam \
+  --optimizer=rmsprop \
   --learning_rate=1 \
   --num_epochs_per_decay=200 \
   --weight_decay=0.004
