@@ -66,7 +66,7 @@ python3 eval_image_classifier.py \
   --checkpoint_path=${TRAIN_DIR} \
   --eval_dir=${TRAIN_DIR} \
   --dataset_name=${DATASET_NAME} \
-  --dataset_split_name=validation \
+  --dataset_split_name=test \
   --dataset_dir=${DATASET_DIR} \
   --model_name=${MODEL_NAME}
 
