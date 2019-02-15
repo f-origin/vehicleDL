@@ -53,7 +53,7 @@ python3 train_image_classifier.py \
   --checkpoint_path=${DATASET_DIR}/${MODEL_NAME}.ckpt \
   --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
   --max_number_of_steps=1000 \
-  --batch_size=12 \
+  --batch_size=2 \
   --learning_rate=0.1 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
