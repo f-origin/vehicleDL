@@ -38,9 +38,9 @@ DATASET_DIR=/data/forigin/car-detction
 DATASET_NAME=pj_vehicle
 
 # Model name
-MODEL_NAME=inception_v4
-EXPORT_NAME=inception_v4_inf_graph.pb
-FREEZE_NAME=freezed_inception_v4.pb
+MODEL_NAME=inception_v3
+EXPORT_NAME=inception_v3_inf_graph.pb
+FREEZE_NAME=freezed_inception_v3.pb
 
 
 # Run training.
@@ -50,11 +50,11 @@ python3 train_image_classifier.py \
   --dataset_split_name=train \
   --dataset_dir=${DATASET_DIR} \
   --model_name=${MODEL_NAME} \
-  --checkpoint_path=${DATASET_DIR}/inception_v4.ckpt \
-  --checkpoint_exclude_scopes=InceptionV4/Logits,InceptionV4/AuxLogits \
+  --checkpoint_path=${DATASET_DIR}/${MODEL_NAME}.ckpt \
+  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
   --preprocessing_name=inception \
   --max_number_of_steps=5000 \
-  --batch_size=15 \
+  --batch_size=24 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
   --log_every_n_steps=100 \
@@ -84,7 +84,7 @@ python3 export_inference_graph.py \
 python3 freeze_graph.py \
   --input_graph=${TRAIN_DIR}/${EXPORT_NAME} \
   --input_binary=True \
-  --input_checkpoint=${TRAIN_DIR}/model.ckpt-200 \
+  --input_checkpoint=${TRAIN_DIR}/model.ckpt-5000 \
   --output_graph=${TRAIN_DIR}/${FREEZE_NAME} \
   --output_node_names=output
 
