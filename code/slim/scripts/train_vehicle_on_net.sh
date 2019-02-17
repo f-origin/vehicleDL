@@ -43,7 +43,7 @@ EXPORT_NAME=inception_v4_inf_graph.pb
 FREEZE_NAME=freezed_inception_v4.pb
 
 # Max steps
-MAX_STEPS=5000
+MAX_STEPS=10000
 
 
 # Run training.
@@ -57,8 +57,8 @@ python3 train_image_classifier.py \
   --checkpoint_exclude_scopes=InceptionV4/Logits,InceptionV4/AuxLogits/Aux_logits \
   --trainable_scopes=InceptionV4/Logits,InceptionV4/AuxLogits/Aux_logits \
   --max_number_of_steps=${MAX_STEPS} \
-  --batch_size=10 \
-  --learning_rate=0.01 \
+  --batch_size=50 \
+  --learning_rate=0.001 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
   --log_every_n_steps=100 \
