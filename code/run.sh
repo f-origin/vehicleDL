@@ -10,17 +10,17 @@ export PYTHONPATH=$PYTHONPATH:$DIR:$DIR/slim:$DIR/object_detection
 
 # 定义各目录
 output_dir=/output  # 训练目录
-dataset_dir=/data/forigin/week9-data # 数据集目录，这里是写死的，记得修改
+dataset_dir=/data/forigin/my-object # 数据集目录，这里是写死的，记得修改
 
-train_dir=$output_dir/train
-mkdir $train_dir
-checkpoint_dir=$train_dir
-eval_dir=$output_dir/eval
-mkdir $eval_dir
+train_dir=${output_dir}/train
+mkdir ${train_dir}
+checkpoint_dir=${train_dir}
+eval_dir=${output_dir}/eval
+mkdir ${eval_dir}
 
 # config文件??
-config=ssd_mobilenet_v1_pets.config
-pipeline_config_path=$output_dir/$config
+config=ssd_mobilenet_v1_my.config
+pipeline_config_path=${output_dir}/$config
 
 echo "###train_dir###" $train_dir "###"
 echo "###eval_dir###" $eval_dir "###"
