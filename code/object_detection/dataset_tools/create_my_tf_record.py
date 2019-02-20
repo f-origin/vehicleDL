@@ -104,7 +104,7 @@ def dict_to_tf_example(data,
       ymaxs.append(ymax / height)
 
       class_name = obj['name']
-      logging.info('****** %s *******  %s', data['filename'], class_name)
+      print('****** %s *******  %s' % (data['filename'], class_name))
       classes_text.append(class_name.encode('utf8'))
       classes.append(label_map_dict[class_name])
       truncated.append(int(obj['truncated']))
