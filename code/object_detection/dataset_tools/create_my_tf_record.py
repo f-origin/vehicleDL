@@ -103,7 +103,7 @@ def dict_to_tf_example(data,
       xmaxs.append(xmax / width)
       ymaxs.append(ymax / height)
 
-      class_name = get_class_name_from_filename(data['filename'])
+      class_name = obj['name']
       classes_text.append(class_name.encode('utf8'))
       classes.append(label_map_dict[class_name])
       truncated.append(int(obj['truncated']))
