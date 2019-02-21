@@ -9,10 +9,11 @@ from PIL import Image
 from utils import visualization_utils as vis_util
 from utils import label_map_util
 
+print("********* %s *********" % tf.__version__)
 if tf.__version__ < '1.4.0':
     raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
 
-NUM_CLASSES = 5
+NUM_CLASSES = 1
 
 
 def parse_args(check=True):
