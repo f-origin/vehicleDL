@@ -9,50 +9,34 @@ echo current dir is $PWD
 export PYTHONPATH=$PYTHONPATH:$DIR:$DIR/slim:$DIR/object_detection
 
 # 定义各目录
-# output_dir=/output  # 训练目录
-# dataset_dir=/data/forigin/my-object # 数据集目录，这里是写死的，记得修改
-output_dir=/home/david/tmp/voc-model  # 训练目录
-dataset_dir=/home/david/tmp/voc-model/data # 数据集目录，这里是写死的，记得修改
-
-
-train_dir=${output_dir}/train
-mkdir ${train_dir}
-checkpoint_dir=${train_dir}
-eval_dir=${output_dir}/eval
-mkdir ${eval_dir}
+output_dir=/output  # 训练目录
+dataset_dir=/data/forigin/my-object # 数据集目录，这里是写死的，记得修改
 
 # config文件??
-config=ssd_mobilenet_v1_my.config
-pipeline_config_path=${output_dir}/$config
+PIPELINE_CONFIG_PATH=${dataset_dir}/ssd_mobilenet_v1_my.config
+MODEL_DIR=${output_dir}/model
+NUM_TRAIN_STEPS=500
+SAMPLE_1_OF_N_EVAL_EXAMPLES=10
 
-echo "###train_dir###" $train_dir "###"
-echo "###eval_dir###" $eval_dir "###"
-echo "###checkpoint_dir###" $checkpoint_dir "###"
-echo "###pipeline_config_path###" $pipeline_config_path "###"
-echo "###dataset_dir###" $dataset_dir "###"
-# 先清空输出目录，本地运行会有效果，tinymind上运行这一行没有任何效果
-# tinymind已经支持引用上一次的运行结果，这一行需要删掉，不然会出现上一次的运行结果被清空的状况。
-# rm -rvf $output_dir/*
+python3 object_detection/model_main.py \
+    --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
+    --model_dir=${MODEL_DIR} \
+    --num_train_steps=${NUM_TRAIN_STEPS} \
+    --sample_1_of_n_eval_examples=${SAMPLE_1_OF_N_EVAL_EXAMPLES} \
+    --alsologtostderr
 
-# 因为dataset里面的东西是不允许修改的，所以这里要把config文件复制一份到输出目录
-cp $dataset_dir/$config $pipeline_config_path
 
-for i in {0..4}  # for循环中的代码执行5此，这里的左右边界都包含，也就是一共训练500个step，每100step验证一次
-do
-    echo "############" $i "runnning #################"
-    last=$[$i*500]
-    current=$[($i+1)*500]
-    sed -i "s/^  num_steps: $last$/  num_steps: $current/g" $pipeline_config_path  # 通过num_steps控制一次训练最多100step
-
-    echo "############" $i "training #################"
-    python3 ./object_detection/train.py --train_dir=$train_dir --pipeline_config_path=$pipeline_config_path
-
-    echo "############" $i "evaluating, this takes a long while #################"
-    python3 ./object_detection/eval.py --checkpoint_dir=$checkpoint_dir --eval_dir=$eval_dir --pipeline_config_path=$pipeline_config_path
-done
 echo "############ export model #################"
 # 导出模型
-python3 ./object_detection/export_inference_graph.py --input_type image_tensor --pipeline_config_path $pipeline_config_path --trained_checkpoint_prefix $train_dir/model.ckpt-$current  --output_directory $output_dir/exported_graphs
+INPUT_TYPE=image_tensor
+TRAINED_CKPT_PREFIX=${MODEL_DIR}/model.ckpt-${NUM_TRAIN_STEPS}
+EXPORT_DIR=${output_dir}/export
+
+python3 object_detection/export_inference_graph.py \
+    --input_type=${INPUT_TYPE} \
+    --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
+    --trained_checkpoint_prefix=${TRAINED_CKPT_PREFIX} \
+    --output_directory=${EXPORT_DIR}
 echo "############ inference #################"
 # 在test.jpg上验证导出的模型
-python3 ./inference.py --output_dir=$output_dir --dataset_dir=$dataset_dir
+python3 ./inference.py --output_dir=${output_dir} --dataset_dir=${dataset_dir}
