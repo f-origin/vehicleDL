@@ -19,7 +19,7 @@ dataset_dir=/home/david/tmp/voc-model/data # 数据集目录，这里是写死�
 PIPELINE_CONFIG_PATH=${dataset_dir}/ssd_mobilenet_v1_my.config
 MODEL_DIR=${output_dir}/model
 NUM_TRAIN_STEPS=10
-SAMPLE_1_OF_N_EVAL_EXAMPLES=10
+SAMPLE_1_OF_N_EVAL_EXAMPLES=1
 
 python3 object_detection/model_main.py \
     --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
