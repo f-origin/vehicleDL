@@ -33,7 +33,7 @@ echo "############ export model #################"
 # 导出模型
 INPUT_TYPE=image_tensor
 TRAINED_CKPT_PREFIX=${MODEL_DIR}/model.ckpt-${NUM_TRAIN_STEPS}
-EXPORT_DIR=${output_dir}/export
+EXPORT_DIR=${output_dir}/exported_graphs
 
 python3 object_detection/export_inference_graph.py \
     --input_type=${INPUT_TYPE} \
