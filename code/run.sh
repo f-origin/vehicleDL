@@ -23,3 +23,10 @@ python3 object_detection/model_main.py \
     --num_train_steps=${NUM_TRAIN_STEPS} \
     --sample_1_of_n_eval_examples=$SAMPLE_1_OF_N_EVAL_EXAMPLES \
     --alsologtostderr
+
+
+python3 object_detection/dataset_tools/create_my_tf_record.py \
+    --label_map_path=/home/david/tmp/VOC/VOC2012/my_label_map.pbtxt \
+    --data_dir=/home/david/tmp/VOC/VOC2012 \
+	--num_shards=2 \
+	--output_dir=/home/david/tmp/VOC
