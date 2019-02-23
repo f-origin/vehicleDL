@@ -9,24 +9,31 @@ echo current dir is $PWD
 export PYTHONPATH=$PYTHONPATH:$DIR:$DIR/slim:$DIR/object_detection
 
 # 定义各目录
-output_dir=/output  # 训练目录
-dataset_dir=/data/forigin/week9-data # 数据集目录，这里是写死的，记得修改
+output_dir=/home/david/tmp/VOC2012-model  # 训练目录
+dataset_dir=/home/david/tmp/VOC2012 # 数据集目录，这里是写死的，记得修改
 
 
-PIPELINE_CONFIG_PATH=${dataset_dir}/ssd_mobilenet_v1_pets.config
+PIPELINE_CONFIG_PATH=${dataset_dir}/ssd_mobilenet_v1_my.config
 MODEL_DIR=${output_dir}/model
-NUM_TRAIN_STEPS=1000
+NUM_TRAIN_STEPS=50000
 SAMPLE_1_OF_N_EVAL_EXAMPLES=1
+
+echo "############ train & eval #################"
 python3 object_detection/model_main.py \
     --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
     --model_dir=${MODEL_DIR} \
     --num_train_steps=${NUM_TRAIN_STEPS} \
-    --sample_1_of_n_eval_examples=$SAMPLE_1_OF_N_EVAL_EXAMPLES \
+    --sample_1_of_n_eval_examples=${SAMPLE_1_OF_N_EVAL_EXAMPLES} \
     --alsologtostderr
 
-
-python3 object_detection/dataset_tools/create_my_tf_record.py \
-    --label_map_path=/home/david/tmp/VOC/VOC2012/my_label_map.pbtxt \
-    --data_dir=/home/david/tmp/VOC/VOC2012 \
-	--num_shards=2 \
-	--output_dir=/home/david/tmp/VOC
+echo "############ export #################"
+# 导出模型
+python3 object_detection/export_inference_graph.py \
+    --input_type=image_tensor \
+    --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
+    --trained_checkpoint_prefix=${MODEL_DIR}/model.ckpt-${NUM_TRAIN_STEPS} \
+    --output_directory=${output_dir}/exported_graphs
+    
+echo "############ inference #################"
+# 在test.jpg上验证导出的模型
+python3 inference.py --output_dir=${output_dir} --dataset_dir=${dataset_dir}

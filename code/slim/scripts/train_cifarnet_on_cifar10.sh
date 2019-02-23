@@ -41,10 +41,9 @@ python3 train_image_classifier.py \
   --dataset_name=cifar10 \
   --dataset_split_name=train \
   --dataset_dir=${DATASET_DIR} \
-  --model_name=cifarnet \
-  --preprocessing_name=cifarnet \
-  --max_number_of_steps=10000 \
-  --batch_size=128 \
+  --model_name=inception_v4 \
+  --max_number_of_steps=300 \
+  --batch_size=15 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
   --log_every_n_steps=100 \
@@ -61,4 +60,4 @@ python3 eval_image_classifier.py \
   --dataset_name=cifar10 \
   --dataset_split_name=test \
   --dataset_dir=${DATASET_DIR} \
-  --model_name=cifarnet
+  --model_name=inception_v4
