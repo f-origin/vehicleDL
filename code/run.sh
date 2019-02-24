@@ -15,7 +15,7 @@ dataset_dir=/home/david/tmp/VOC2012 # 数据集目录，这里是写死的，记
 
 PIPELINE_CONFIG_PATH=${dataset_dir}/ssd_mobilenet_v1_my.config
 MODEL_DIR=${output_dir}/model
-NUM_TRAIN_STEPS=50000
+NUM_TRAIN_STEPS=5000
 SAMPLE_1_OF_N_EVAL_EXAMPLES=1
 
 echo "############ train & eval #################"

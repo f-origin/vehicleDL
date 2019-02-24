@@ -61,6 +61,7 @@ import tensorflow as tf
 
 from tensorflow.python.platform import gfile
 from datasets import dataset_factory
+from preprocessing import preprocessing_factory
 from nets import nets_factory
 
 
@@ -128,15 +129,25 @@ def main(_):
         num_classes=(dataset.num_classes - FLAGS.labels_offset),
         is_training=FLAGS.is_training)
     image_size = FLAGS.image_size or network_fn.default_image_size
-    if FLAGS.is_video_model:
-      input_shape = [FLAGS.batch_size, FLAGS.num_frames,
-                     image_size, image_size, 3]
-    else:
-      input_shape = [FLAGS.batch_size, image_size, image_size, 3]
-    placeholder = tf.placeholder(name='input', dtype=tf.float32,
-                                 shape=input_shape)
+#     if FLAGS.is_video_model:
+#       input_shape = [FLAGS.batch_size, FLAGS.num_frames,
+#                      image_size, image_size, 3]
+#     else:
+#       input_shape = [FLAGS.batch_size, image_size, image_size, 3]
+#     placeholder = tf.placeholder(name='input', dtype=tf.float32,
+#                                  shape=input_shape)
 
-    logits,end_points = network_fn(placeholder)
+    placeholder = tf.placeholder(name='input', dtype=tf.string)
+    preprocessing_name = FLAGS.model_name
+    image_preprocessing_fn = preprocessing_factory.get_preprocessing(
+        preprocessing_name,
+        is_training=False)
+    
+    image = tf.image.decode_jpeg(placeholder,channels=3)
+    image = image_preprocessing_fn(image,image_size,image_size)
+    x = tf.expand_dims(image,axis=0)
+
+    logits,end_points = network_fn(x)
     predictions = tf.nn.softmax(logits, name='output')
     if FLAGS.quantize:
       tf.contrib.quantize.create_eval_graph()
