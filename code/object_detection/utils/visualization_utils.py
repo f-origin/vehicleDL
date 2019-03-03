@@ -172,13 +172,14 @@ def draw_bounding_box_on_image(image,
   draw.line([(left, top), (left, bottom), (right, bottom),
              (right, top), (left, top)], width=thickness, fill=color)
   try:
-    font = ImageFont.truetype('arial.ttf', 24)
+    font = ImageFont.truetype('uming.ttc', 24)
   except IOError:
     font = ImageFont.load_default()
 
   # If the total height of the display strings added to the top of the bounding
   # box exceeds the top of the image, stack the strings below the bounding box
   # instead of above.
+  print(display_str_list)
   display_str_heights = [font.getsize(ds)[1] for ds in display_str_list]
   # Each display_str has a top and bottom margin of 0.05x.
   total_display_str_height = (1 + 2 * 0.05) * sum(display_str_heights)
@@ -188,6 +189,7 @@ def draw_bounding_box_on_image(image,
   else:
     text_bottom = bottom + total_display_str_height
   # Reverse list and print from bottom to top.
+  
   for display_str in display_str_list[::-1]:
     text_width, text_height = font.getsize(display_str)
     margin = np.ceil(0.05 * text_height)
@@ -629,7 +631,7 @@ def visualize_boxes_and_labels_on_image_array(
     keypoints=None,
     use_normalized_coordinates=False,
     max_boxes_to_draw=20,
-    min_score_thresh=.5,
+    min_score_thresh=.85,
     agnostic_mode=False,
     line_thickness=4,
     groundtruth_box_visualization_color='black',
