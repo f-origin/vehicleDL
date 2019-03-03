@@ -6,6 +6,7 @@
 
 import classifier_image as ci
 
-image=1
-model_file=2
-ci.infrence_on_image(image,model_file)
+image='/home/david/tmp/vehicle-model/test.jpg'
+model_file='/home/david/tmp/vehicle-model/freezed_inception_v4.pb'
+label_file = '/home/david/tmp/vehicle-model/labels.txt'
+ci.infrence_on_imageFile(image,model_file,label_file)
