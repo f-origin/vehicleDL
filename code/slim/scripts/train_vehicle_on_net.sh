@@ -58,7 +58,7 @@ python3 train_image_classifier.py \
   --trainable_scopes=InceptionV4/Logits,InceptionV4/AuxLogits/Aux_logits \
   --max_number_of_steps=${MAX_STEPS} \
   --batch_size=50 \
-  --learning_rate=0.01 \
+  --learning_rate=0.1 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
   --log_every_n_steps=100 \
