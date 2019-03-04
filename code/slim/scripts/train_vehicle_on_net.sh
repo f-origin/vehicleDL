@@ -32,10 +32,10 @@ OUT_DIR=/output
 TRAIN_DIR=${OUT_DIR}/vehicle-model
 
 # Where the dataset is saved to.
-DATASET_DIR=/data/forigin/car-detction
+DATASET_DIR=/data/forigin/vehicle-data
 # DATASET_DIR=~/tmp/dogs
 
-DATASET_NAME=pj_vehicle
+DATASET_NAME=vehicle
 
 # Model name
 MODEL_NAME=inception_v4
@@ -43,7 +43,7 @@ EXPORT_NAME=inception_v4_inf_graph.pb
 FREEZE_NAME=freezed_inception_v4.pb
 
 # Max steps
-MAX_STEPS=40000
+MAX_STEPS=6000
 
 
 # Run training.
@@ -58,7 +58,7 @@ python3 train_image_classifier.py \
   --trainable_scopes=InceptionV4/Logits,InceptionV4/AuxLogits/Aux_logits \
   --max_number_of_steps=${MAX_STEPS} \
   --batch_size=50 \
-  --learning_rate=0.1 \
+  --learning_rate=0.001 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
   --log_every_n_steps=100 \
