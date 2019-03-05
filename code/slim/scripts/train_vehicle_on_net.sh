@@ -38,9 +38,9 @@ DATASET_DIR=/data/forigin/vehicle-data
 DATASET_NAME=vehicle
 
 # Model name
-MODEL_NAME=inception_v4
-EXPORT_NAME=inception_v4_inf_graph.pb
-FREEZE_NAME=freezed_inception_v4.pb
+MODEL_NAME=inception_resnet_v2
+EXPORT_NAME=inception_resnet_v2_inf_graph.pb
+FREEZE_NAME=freezed_inception_resnet_v2.pb
 
 # Max steps
 MAX_STEPS=20000
@@ -54,11 +54,13 @@ python3 train_image_classifier.py \
   --dataset_dir=${DATASET_DIR} \
   --model_name=${MODEL_NAME} \
   --checkpoint_path=${DATASET_DIR}/${MODEL_NAME}.ckpt \
-  --checkpoint_exclude_scopes=InceptionV4/Logits,InceptionV4/AuxLogits/Aux_logits \
-  --trainable_scopes=InceptionV4/Logits,InceptionV4/AuxLogits/Aux_logits \
+  --checkpoint_exclude_scopes=InceptionResnetV2/Logits,InceptionResnetV2/AuxLogits  \
+  --trainable_scopes=InceptionResnetV2/Logits,InceptionResnetV2/AuxLogits \
   --max_number_of_steps=${MAX_STEPS} \
-  --batch_size=50 \
-  --learning_rate=0.1 \
+  --batch_size=15 \
+  --optimizer=adam \
+  --learning_rate=0.01 \
+  --weight_decay=0.00004 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
   --log_every_n_steps=100 \
