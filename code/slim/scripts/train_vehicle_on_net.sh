@@ -41,6 +41,7 @@ DATASET_NAME=vehicle
 MODEL_NAME=inception_resnet_v2
 EXPORT_NAME=inception_resnet_v2_inf_graph.pb
 FREEZE_NAME=freezed_inception_resnet_v2.pb
+CHECKPOINT_NAME=inception_resnet_v2_2016_08_30
 
 # Max steps
 MAX_STEPS=20000
