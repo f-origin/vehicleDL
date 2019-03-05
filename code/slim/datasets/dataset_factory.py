@@ -23,6 +23,7 @@ from datasets import flowers
 from datasets import imagenet
 from datasets import mnist
 from datasets import vehicle
+from datasets import pj_vehicle
 from datasets import dogs
 
 datasets_map = {
@@ -31,6 +32,7 @@ datasets_map = {
     'imagenet': imagenet,
     'mnist': mnist,
     'vehicle': vehicle,
+    'pj_vehicle': pj_vehicle,
     'dogs': dogs
 }
 
