@@ -44,7 +44,7 @@ FREEZE_NAME=freezed_resnet_v1_50.pb
 CHECKPOINT_NAME=resnet_v1_50
 
 # Max steps
-MAX_STEPS=20000
+MAX_STEPS=50000
 
 
 # Run training.
@@ -58,7 +58,7 @@ python3 train_image_classifier.py \
   --checkpoint_exclude_scopes=resnet_v1_50/logits \
   --trainable_scopes=resnet_v1_50/logits \
   --max_number_of_steps=${MAX_STEPS} \
-  --batch_size=15 \
+  --batch_size=50 \
   --optimizer=adam \
   --learning_rate=0.01 \
   --weight_decay=0.00004 \
