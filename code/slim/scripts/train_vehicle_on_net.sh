@@ -43,7 +43,7 @@ EXPORT_NAME=inception_v4_inf_graph.pb
 FREEZE_NAME=freezed_inception_v4.pb
 
 # Max steps
-MAX_STEPS=50000
+MAX_STEPS=20000
 
 
 # Run training.
