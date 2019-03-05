@@ -54,8 +54,8 @@ python3 train_image_classifier.py \
   --dataset_split_name=train \
   --dataset_dir=${DATASET_DIR} \
   --model_name=${MODEL_NAME} \
-  --checkpoint_path=${DATASET_DIR}/${MODEL_NAME}.ckpt \
-  --checkpoint_exclude_scopes=InceptionResnetV2/Logits,InceptionResnetV2/AuxLogits  \
+  --checkpoint_path=${DATASET_DIR}/${CHECKPOINT_NAME}.ckpt \
+  --checkpoint_exclude_scopes=InceptionResnetV2/Logits,InceptionResnetV2/AuxLogits \
   --trainable_scopes=InceptionResnetV2/Logits,InceptionResnetV2/AuxLogits \
   --max_number_of_steps=${MAX_STEPS} \
   --batch_size=15 \
