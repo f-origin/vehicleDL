@@ -59,7 +59,7 @@ python3 train_image_classifier.py \
   --trainable_scopes=resnet_v1_101/logits \
   --max_number_of_steps=${MAX_STEPS} \
   --batch_size=16 \
-  --optimizer=momentum \
+  --optimizer=rmsprop \
   --learning_rate=0.01 \
   --weight_decay=0.00001 \
   --save_interval_secs=120 \
