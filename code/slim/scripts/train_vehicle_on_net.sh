@@ -32,10 +32,10 @@ OUT_DIR=/output
 TRAIN_DIR=${OUT_DIR}/vehicle-model
 
 # Where the dataset is saved to.
-DATASET_DIR=/data/forigin/vehicle-data
+DATASET_DIR=/data/forigin/car-detction
 # DATASET_DIR=~/tmp/dogs
 
-DATASET_NAME=vehicle
+DATASET_NAME=pj_vehicle
 
 # Model name
 MODEL_NAME=resnet_v1_50
@@ -44,7 +44,7 @@ FREEZE_NAME=freezed_resnet_v1_50.pb
 CHECKPOINT_NAME=resnet_v1_50
 
 # Max steps
-MAX_STEPS=50000
+MAX_STEPS=30000
 
 
 # Run training.
@@ -58,7 +58,7 @@ python3 train_image_classifier.py \
   --checkpoint_exclude_scopes=resnet_v1_50/logits \
   --trainable_scopes=resnet_v1_50/logits \
   --max_number_of_steps=${MAX_STEPS} \
-  --batch_size=50 \
+  --batch_size=16 \
   --optimizer=adam \
   --learning_rate=0.01 \
   --weight_decay=0.00004 \
