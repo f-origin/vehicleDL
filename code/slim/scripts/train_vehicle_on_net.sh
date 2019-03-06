@@ -61,7 +61,7 @@ python3 train_image_classifier.py \
   --batch_size=16 \
   --optimizer=rmsprop \
   --learning_rate=0.01 \
-  --weight_decay=0.00004 \
+  --weight_decay=0.0004 \
   --save_interval_secs=120 \
   --save_summaries_secs=120 \
   --log_every_n_steps=100 \
