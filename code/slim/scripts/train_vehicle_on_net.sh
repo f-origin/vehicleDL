@@ -32,11 +32,11 @@ OUT_DIR=/output
 TRAIN_DIR=${OUT_DIR}/vehicle-model
 
 # Where the dataset is saved to.
-DATASET_DIR=/data/forigin/vehicle-data
+DATASET_DIR=/data/sunimage/cardetect-yu
 
 # DATASET_DIR=~/tmp/dogs
 
-DATASET_NAME=vehicle
+DATASET_NAME=car
 
 # Model name
 MODEL_NAME=resnet_v1_50
@@ -45,7 +45,7 @@ FREEZE_NAME=freezed_resnet_v1_50.pb
 CHECKPOINT_NAME=resnet_v1_50
 
 # Max steps
-MAX_STEPS=70000
+MAX_STEPS=35000
 
 
 # Run training.
@@ -75,7 +75,7 @@ python3 eval_image_classifier.py \
   --checkpoint_path=${TRAIN_DIR} \
   --eval_dir=${TRAIN_DIR} \
   --dataset_name=${DATASET_NAME} \
-  --dataset_split_name=validation \
+  --dataset_split_name=val \
   --dataset_dir=${DATASET_DIR} \
   --model_name=${MODEL_NAME}
 
