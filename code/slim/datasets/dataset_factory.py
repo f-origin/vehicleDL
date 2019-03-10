@@ -25,6 +25,7 @@ from datasets import mnist
 from datasets import vehicle
 from datasets import pj_vehicle
 from datasets import dogs
+from datasets import car
 
 datasets_map = {
     'cifar10': cifar10,
@@ -33,7 +34,8 @@ datasets_map = {
     'mnist': mnist,
     'vehicle': vehicle,
     'pj_vehicle': pj_vehicle,
-    'dogs': dogs
+    'dogs': dogs,
+    'car': car
 }
 
 
