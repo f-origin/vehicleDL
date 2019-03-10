@@ -55,9 +55,6 @@ python3 train_image_classifier.py \
   --dataset_split_name=train \
   --dataset_dir=${DATASET_DIR} \
   --model_name=${MODEL_NAME} \
-  --checkpoint_path=${DATASET_DIR}/${CHECKPOINT_NAME}.ckpt \
-  --checkpoint_exclude_scopes=resnet_v1_50/logits \
-  --trainable_scopes=resnet_v1_50/logits \
   --max_number_of_steps=${MAX_STEPS} \
   --batch_size=16 \
   --optimizer=rmsprop \
