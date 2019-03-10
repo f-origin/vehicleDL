@@ -45,7 +45,7 @@ FREEZE_NAME=freezed_resnet_v1_50.pb
 CHECKPOINT_NAME=resnet_v1_50
 
 # Max steps
-MAX_STEPS=35000
+MAX_STEPS=50000
 
 
 # Run training.
@@ -56,7 +56,7 @@ python3 train_image_classifier.py \
   --dataset_dir=${DATASET_DIR} \
   --model_name=${MODEL_NAME} \
   --max_number_of_steps=${MAX_STEPS} \
-  --batch_size=16 \
+  --batch_size=50 \
   --optimizer=rmsprop \
   --learning_rate=0.01 \
   --weight_decay=0.00004 \
