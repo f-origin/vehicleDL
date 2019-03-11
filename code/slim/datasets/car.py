@@ -28,7 +28,7 @@ slim = tf.contrib.slim
 
 _FILE_PATTERN = 'car_%s_*.tfrecord'
 
-SPLITS_TO_SIZES = {'train': 60000, 'val': 6947}
+SPLITS_TO_SIZES = {'train': 43971, 'validation': 4885}
 
 _NUM_CLASSES = 765
 
