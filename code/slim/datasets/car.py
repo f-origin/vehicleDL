@@ -30,7 +30,7 @@ _FILE_PATTERN = 'car_%s_*.tfrecord'
 
 SPLITS_TO_SIZES = {'train': 60000, 'val': 6947}
 
-_NUM_CLASSES = 764
+_NUM_CLASSES = 765
 
 _ITEMS_TO_DESCRIPTIONS = {
     'image': 'A car image.',
